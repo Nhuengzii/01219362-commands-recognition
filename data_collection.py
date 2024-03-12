@@ -1,6 +1,7 @@
 import streamlit as st
 from st_audiorec import st_audiorec
 import os
+import time
 from scipy.io import wavfile
 import decryption
 from firebase_admin import storage
@@ -47,7 +48,6 @@ data_dict = {
 
 
 if sid:
-    all_blob = list(root_bucket.list_blobs(prefix="data/"))
     if root_bucket.blob(os.path.join(root_path, sid)).exists():
         root_bucket.blob(os.path.join(root_path, sid) + "/").upload_from_string('')
 
