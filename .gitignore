@@ -38,3 +38,6 @@ web/*.tsbuildinfo
 web/next-env.d.ts
 **/__pycache__/
 temp/
+data_train/
+data_test/
+data/
