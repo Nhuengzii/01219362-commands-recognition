@@ -11,7 +11,7 @@ target_sr = 48000
 
 def inference(audio_path):
     model = SpeechCommandClassifier(input_shapes=(1, 32, 141), num_classes=8)
-    model.load_state_dict(torch.load("model.pth"))
+    model.load_state_dict(torch.load("best_model.pth"))
     model.eval()
     wav,sr = torchaudio.load(audio_path)
     resampler = Resample(sr, target_sr)
@@ -27,7 +27,8 @@ def inference(audio_path):
 demo = gr.Interface(
     fn=inference,
     inputs= gr.Audio(sources=["microphone", "upload"], type="filepath" ),
-    outputs=gr.Label()
+    outputs=gr.Label(),
+    description="This is a demo for speech command classification\n available commands are: ปิดเพลง, อื่น ๆ, เอคโค่, เล่นเพลงต่อ, เล่นเพลงถัดไป, หยุดเพลง, เปิดเพลง, เล่นเพลงก่อนหน้า"
 )
 
 demo.launch(share=False)
