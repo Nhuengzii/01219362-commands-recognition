@@ -41,3 +41,4 @@ temp/
 data_train/
 data_test/
 data/
+*.pth
